@@ -149,10 +149,6 @@ const ChatProvider = ({ children }: { children: ReactNode }) => {
         };
     }, [isAuth]);
 
-    if (!connection) {
-        return <Loader />;
-    }
-
     return (
         <ChatContext.Provider
             value={{

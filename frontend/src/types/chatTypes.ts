@@ -9,7 +9,7 @@ export interface ChatContextType {
             | IChatParticipant[]
             | ((prev: IChatParticipant[]) => IChatParticipant[])
     ) => void;
-    connection: HubConnection;
+    connection: HubConnection | undefined;
     selectedChat: IChatParticipant | null;
     setSelectedChat: Dispatch<SetStateAction<IChatParticipant | null>>;
     isVisible: boolean;

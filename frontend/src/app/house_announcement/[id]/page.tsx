@@ -13,6 +13,7 @@ import ProfileWithMessage from '@/components/ProfileWithMessage/ProfileWithMessa
 import MyError from '@/components/Error/MyError';
 import { UUID } from 'node:crypto';
 import { houseAnnouncementService } from '@/services';
+import Loader from '@/components/Loader/Loader';
 
 const AnnouncementPage = () => {
     const params = useParams<{ id: UUID }>();
@@ -35,6 +36,12 @@ const AnnouncementPage = () => {
 
         getAnnouncement();
     }, [announcementId, isAuthLoading, isAuth, user, router]);
+
+    const startDate = new Date().getTime();
+
+    if (!announcement) {
+        return <Loader />;
+    }
 
     if (!announcement) {
         return <MyError error="Объявление не найдено" />;
