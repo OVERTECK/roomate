@@ -1,0 +1,26 @@
+.container {
+    padding: 5px 10px;
+}
+
+.title {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 10px;
+}
+
+.radioOption {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.radioOption input[type='radio'] {
+    margin: 0;
+}

@@ -1,0 +1,19 @@
+.price {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #27ae60;
+    margin: 25px 0px;
+}
+
+@media (max-width: 768px) {
+    .price {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .price {
+        font-size: 1.3rem;
+    }
+}

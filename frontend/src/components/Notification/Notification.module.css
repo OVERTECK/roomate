@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    gap: 0.6rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    transition: 0.2s;
+}
+
+.container::after {
+    transform: rotateX(180deg);
+}

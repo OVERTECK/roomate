@@ -1,0 +1,43 @@
+.inputAddress {
+    padding: 5px 10px;
+    font-size: 20px;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.suggestionAddress {
+    padding: 5px 10px;
+    margin: 6px;
+    font-size: 20px;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid gray;
+    width: fit-content;
+    transition: 0.2s;
+}
+
+.suggestionAddress:hover {
+    background-color: darkgray;
+}
+
+.highlightAddress {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+.title {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}

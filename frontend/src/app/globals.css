@@ -1,0 +1,11 @@
+@import 'tailwindcss';
+
+:root {
+    --main-color: #f28f6b;
+    --main-color-hover: #f2d3ac;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}

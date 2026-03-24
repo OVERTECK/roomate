@@ -1,0 +1,33 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    padding: 100px 50px 50px;
+    z-index: 1;
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border: 2px solid lightgray;
+    min-width: 200px;
+    max-width: 90vw;
+    overflow: auto;
+}
+
+@media (max-width: 767px) {
+    .content {
+        padding: 5px;
+    }
+}

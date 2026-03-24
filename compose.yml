@@ -1,0 +1,93 @@
+services:
+  db:
+    container_name: db
+    image: postgres:16
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: db
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+  
+  redis:
+    image: redis:latest
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    environment:
+      REDIS_PASSWORD: admin
+    command: redis-server --appendonly yes --requirepass admin
+    networks:
+      - app_network
+  
+  api:
+    container_name: api
+    restart: always
+    image: api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports: 
+      - "8000:8080"
+    networks:
+      - app_network
+    environment:
+      ConnectionStrings__MyDbContext: ${ConnectionStrings__MyDbContext}
+      ConnectionStrings__Redis: ${ConnectionStrings__Redis}
+      JWT__SecretKey: ${JWT__SecretKey}
+      JWT__Issuer: ${JWT__Issuer}
+      JWT__Audience: ${JWT__Audience}
+      EmailSettings__Password: ${EmailSettings__Password}
+      EmailSettings__Port: ${EmailSettings__Port}
+      EmailSettings__SenderEmail: ${EmailSettings__SenderEmail}
+      EmailSettings__SenderName: ${EmailSettings__SenderName}
+      EmailSettings__SmtpServer: ${EmailSettings__SmtpServer}
+      EmailSettings__Username: ${EmailSettings__Username}
+      EmailSettings__UseSSL: ${EmailSettings__UseSSL}
+      GoogleOAUTH__ClientId: ${GoogleOAUTH__ClientId}
+      GoogleOAUTH__ClientSecret: ${GoogleOAUTH__ClientSecret}
+      Urls__Front: ${Urls__Front}
+    depends_on:
+      - db
+      - redis
+
+  client:
+    container_name: client
+    restart: always
+    image: client
+    environment:
+      ACCESS_KEY: ${ACCESS_KEY}
+      NEXT_PUBLIC_API_DADATA: ${NEXT_PUBLIC_API_DADATA}
+      NEXT_PUBLIC_MAP_API_KEY: ${NEXT_PUBLIC_MAP_API_KEY}
+      SECRET_KEY: ${SECRET_KEY}
+      NEXT_PUBLIC_SUGGEST_API_KEY: ${NEXT_PUBLIC_SUGGEST_API_KEY}
+    build:
+      args:
+        ACCESS_KEY: ${ACCESS_KEY}
+        NEXT_PUBLIC_API_DADATA: ${NEXT_PUBLIC_API_DADATA}
+        NEXT_PUBLIC_MAP_API_KEY: ${NEXT_PUBLIC_MAP_API_KEY}
+        SECRET_KEY: ${SECRET_KEY}
+        NEXT_PUBLIC_SUGGEST_API_KEY: ${NEXT_PUBLIC_SUGGEST_API_KEY}
+      context: ./frontend
+      dockerfile: Dockerfile
+    networks:
+      - app_network
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+
+volumes:
+  redis_data:
+  pg_data:
+    
+networks:
+  app_network:
+    driver: bridge

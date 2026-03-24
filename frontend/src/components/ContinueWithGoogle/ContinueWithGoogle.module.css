@@ -1,0 +1,22 @@
+.googleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 7px !important;
+    border: none;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: lightgray;
+    }
+
+    &:focus-visible {
+        outline: 2px solid blue;
+        outline-offset: 2px;
+    }
+}

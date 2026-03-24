@@ -1,0 +1,103 @@
+name: roomate project
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    environment: NEXT_PUBLIC_ACCESS_KEY
+    # needs: [build-backend, build-frontend]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Create .env file
+        run: |
+          echo "ConnectionStrings__MyDbContext=${{ secrets.CONNECTIONSTRINGS__MYDBCONTEXT }}" >> .env
+          echo "ConnectionStrings__Redis=${{ secrets.CONNECTIONSTRINGS__REDIS }}" >> .env
+          echo "JWT__SecretKey=${{ secrets.JWT__SECRETKEY }}" >> .env
+          echo "JWT__Issuer=${{ secrets.JWT__ISSUER }}" >> .env
+          echo "JWT__Audience=${{ secrets.JWT__AUDIENCE }}" >> .env
+          echo "EmailSettings__Password=${{ secrets.EMAILSETTINGS__PASSWORD }}" >> .env
+          echo "EmailSettings__Port=${{ secrets.EMAILSETTINGS__PORT }}" >> .env
+          echo "EmailSettings__SenderEmail=${{ secrets.EMAILSETTINGS__SENDEREMAIL }}" >> .env
+          echo "EmailSettings__SenderName=${{ secrets.EMAILSETTINGS__SENDERNAME }}" >> .env
+          echo "EmailSettings__SmtpServer=${{ secrets.EMAILSETTINGS__SMTPSERVER }}" >> .env
+          echo "EmailSettings__Username=${{ secrets.EMAILSETTINGS__USERNAME }}" >> .env
+          echo "EmailSettings__UseSSL=${{ secrets.EMAILSETTINGS__USESSL }}" >> .env
+          echo "GoogleOAUTH__ClientId=${{ secrets.GOOGLEOAUTH__CLIENTID }}" >> .env
+          echo "GoogleOAUTH__ClientSecret=${{ secrets.GOOGLEOAUTH__CLIENTSECRET }}" >> .env
+          echo "Urls__Front=${{ secrets.URLS__FRONT }}" >> .env
+          echo "ACCESS_KEY=${{ secrets.NEXT_PUBLIC_ACCESS_KEY }}" >> .env
+          echo "SECRET_KEY=${{ secrets.NEXT_PUBLIC_SECRET_KEY }}" >> .env
+          echo "NEXT_PUBLIC_API_DADATA=${{ secrets.NEXT_PUBLIC_DADATA_API_KEY }}" >> .env
+          echo "NEXT_PUBLIC_MAP_API_KEY=${{ secrets.NEXT_PUBLIC_MAP_API_KEY }}" >> .env
+          echo "NEXT_PUBLIC_SUGGEST_API_KEY=${{ secrets.NEXT_PUBLIC_SUGGEST_API_KEY }}" >> .env
+
+      - name: Validate compose.yaml
+        run: docker compose config
+
+      - name: Build and run containers
+        run: docker compose up --build -d
+
+      - name: Check running containers
+        run: docker compose ps
+
+# build-backend:
+#   runs-on: ubuntu-latest
+#   steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
+
+#     - name: Setup .NET
+#       uses: actions/setup-dotnet@v3
+#       with:
+#         dotnet-version: "9.0"
+
+#     - name: Restore
+#       run: dotnet restore ./backend
+
+#     - name: Build
+#       run: dotnet build ./backend --configuration Release --no-restore
+
+#     # - name: Tests
+#     #   run: dotnet test ./backend/Backend.Tests --configuration Release --no-build --verbosity normal
+
+#     - name: Publish
+#       run: dotnet publish ./backend --configuration Release --no-build
+# build-frontend:
+#   runs-on: ubuntu-latest
+#   steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
+
+#     - name: Install Node
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: "20"
+
+#     - name: Install dependencies
+#       run: |
+#         cd frontend
+#         npm ci
+
+#     - name: Tests
+#       run: |
+#         cd frontend
+#         npm run test
+
+#     - name: Build Next
+#       run: |
+#         cd frontend
+#         npm run build
+#       env:
+#         NEXT_PUBLIC_ACCESS_KEY: ${{ secrets.NEXT_PUBLIC_ACCESS_KEY }}
+#         NEXT_PUBLIC_BUCKET_NAME: ${{ secrets.NEXT_PUBLIC_BUCKET_NAME }}
+#         NEXT_PUBLIC_DADATA_API_KEY: ${{ secrets.NEXT_PUBLIC_DADATA_API_KEY }}
+#         NEXT_PUBLIC_MAP_API_KEY: ${{ secrets.NEXT_PUBLIC_MAP_API_KEY }}
+#         NEXT_PUBLIC_S3_REGION: ${{ secrets.NEXT_PUBLIC_S3_REGION }}
+#         NEXT_PUBLIC_S3_URL: ${{ secrets.NEXT_PUBLIC_S3_URL }}
+#         NEXT_PUBLIC_SECRET_KEY: ${{ secrets.NEXT_PUBLIC_SECRET_KEY }}
+#         NEXT_PUBLIC_SUGGEST_API_KEY: ${{ secrets.NEXT_PUBLIC_SUGGEST_API_KEY }}

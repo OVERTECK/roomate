@@ -1,0 +1,27 @@
+.containerInputCode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+.inputCode {
+    display: flex;
+    gap: 7px;
+}
+
+.codePole {
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
