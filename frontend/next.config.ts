@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { redirect } from 'next/dist/server/api-utils';
 
 const nextConfig: NextConfig = {
     images: {
@@ -16,6 +17,18 @@ const nextConfig: NextConfig = {
         ],
     },
     output: 'standalone',
+};
+
+module.exports = {
+    async redirects() {
+        return [
+            {
+                source: '/',
+                destination: '/houses_announcements',
+                permanent: true,
+            },
+        ];
+    },
 };
 
 export default nextConfig;

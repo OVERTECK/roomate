@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 const Page = () => {
-    redirect('/houses_announcements');
+    return <div></div>
 };
 
 export default Page;
