@@ -86,14 +86,10 @@ export default function RootLayout({
 }>) {
     const queryClient = useQueryClientProvider();
 
-    useEffect(() => {
-        document.title = 'roomate - Поиск соседей';
-    }, []);
-
     return (
         <html lang="ru">
             <head>
-                <meta charSet="UTF-8" />
+                <meta name="title" content="roomate - Поиск соседей" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name='description' content='roomate - сайт для поиска людей для совместного проживания по всей России. Добавляй объявление жилья или анкету соседа, ищи соседей походящих именно тебе.' />
                 <meta property="og:type" content="website" />
