@@ -36,9 +36,6 @@ jobs:
           echo "NEXT_PUBLIC_MAP_API_KEY=${{ secrets.NEXT_PUBLIC_MAP_API_KEY }}" >> .env
           echo "NEXT_PUBLIC_SUGGEST_API_KEY=${{ secrets.NEXT_PUBLIC_SUGGEST_API_KEY }}" >> .env
 
-      - name: Validate compose.yaml
-        run: docker compose config
-
       - name: Build and run containers
         run: docker compose up --build -d
 
