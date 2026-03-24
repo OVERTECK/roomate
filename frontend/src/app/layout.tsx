@@ -92,6 +92,17 @@ export default function RootLayout({
 
     return (
         <html lang="ru">
+            <head>
+                <meta charSet="UTF-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta name='description' content='roomate - сайт для поиска людей для совместного проживания по всей России. Добавляй объявление жилья или анкету соседа, ищи соседей походящих именно тебе.' />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://roomate.ru" />
+                <meta property="og:title" content="roomate - Поиск соседей" />
+                <meta property="og:description" content="roomate - сайт для поиска людей для совместного проживания по всей России. Добавляй объявление жилья или анкету соседа, ищи соседей походящих именно тебе." />
+                <meta property="og:image" content="https://roomate.ru/preview.png" />
+                <link rel="icon" href="/favicon.ico" />
+            </head>
             <body
                 className={ubuntuFont.className}
             >
