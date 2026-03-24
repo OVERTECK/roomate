@@ -9,9 +9,7 @@ import {
 import { IMessage } from '@/models/IMessage';
 import { getApiUrl } from '@/utils/getApiUrl';
 import { IChatParticipant } from '@/models/IChatParticipant';
-import MyError from '@/components/Error/MyError';
 import { chatParticipantService } from '@/services';
-import Loader from '@/components/Loader/Loader';
 
 const ChatProvider = ({ children }: { children: ReactNode }) => {
     const [chats, setChats] = useState<IChatParticipant[]>([]);

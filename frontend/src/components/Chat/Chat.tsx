@@ -163,7 +163,7 @@ const Chat = () => {
     async function handleSendMessage(e: FormEvent) {
         e.preventDefault();
 
-        if (!textMessage || !connection) {
+        if (!textMessage) {
             return;
         }
 
@@ -173,8 +173,8 @@ const Chat = () => {
             Text: textMessage,
         };
 
-        await connection.invoke('SendMessage', message);
-        await connection.invoke(
+        await connection?.invoke('SendMessage', message);
+        await connection?.invoke(
             'SendNotification',
             selectedChat?.receiverUser.id
         );

@@ -42,7 +42,7 @@ export default function Profile() {
         receivedUserId: UUID;
     }) {
         try {
-            if (!userId || !receivedUserId || !connection) return null;
+            if (!userId || !receivedUserId) return null;
 
             if (checkExistingChat(receivedUserId)) {
                 const existChat = chats.find(
@@ -65,7 +65,7 @@ export default function Profile() {
                 receiveUserId: receivedUserId,
             };
 
-            await connection.invoke('CreateChat', newChatParticipantRequest);
+            await connection?.invoke('CreateChat', newChatParticipantRequest);
 
             setIsVisible(true);
             setStep('Chat');

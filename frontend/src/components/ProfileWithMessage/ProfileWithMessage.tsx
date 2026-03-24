@@ -32,7 +32,7 @@ const ProfileWithMessage = ({
             receiveUserId: receivedUserId,
         };
 
-        await connection.invoke('CreateChat', newChatParticipantRequest);
+        await connection?.invoke('CreateChat', newChatParticipantRequest);
 
         setIsVisible(true);
         setStep('Chat');
