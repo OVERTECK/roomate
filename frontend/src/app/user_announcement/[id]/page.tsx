@@ -14,6 +14,7 @@ import { IUserAnnouncement } from '@/models/IUserAnnouncement';
 import ImageUser from '@/components/ImageUser/ImageUser';
 import Image from 'next/image';
 import { userAnnouncementService } from '@/services';
+import Loader from '@/components/Loader/Loader';
 
 const Page = () => {
     const params = useParams<{ id: string }>();
@@ -40,7 +41,7 @@ const Page = () => {
     }, [announcementId, isAuth, router]);
 
     if (!announcement) {
-        return <MyError error="Объявление не найдено" />;
+        return <Loader />;
     }
 
     return (

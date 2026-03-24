@@ -42,7 +42,7 @@ export default function Profile() {
         receivedUserId: UUID;
     }) {
         try {
-            if (!userId || !receivedUserId) return null;
+            if (!userId || !receivedUserId || !connection) return null;
 
             if (checkExistingChat(receivedUserId)) {
                 const existChat = chats.find(

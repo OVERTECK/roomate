@@ -163,7 +163,7 @@ const Chat = () => {
     async function handleSendMessage(e: FormEvent) {
         e.preventDefault();
 
-        if (!textMessage) {
+        if (!textMessage || !connection) {
             return;
         }
 
