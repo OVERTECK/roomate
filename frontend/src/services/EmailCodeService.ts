@@ -6,7 +6,7 @@ export class EmailCodeService {
     async SendCode(email: string) {
         const { data } = await this.api.post<{ code: number; message: string }>(
             '/email/sendCode',
-            { email }
+            email
         );
 
         return data;

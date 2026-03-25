@@ -7,10 +7,12 @@ namespace Backend.API.Services;
 public class EmailSenderService : IEmailSenderService
 {
     private readonly IConfiguration _configuration;
+    private readonly ILogger<EmailSenderService> _logger;
 
-    public EmailSenderService(IConfiguration configuration)
+    public EmailSenderService(IConfiguration configuration, ILogger<EmailSenderService> logger)
     {
         _configuration = configuration;
+        _logger = logger;
     }
 
     public async Task SendMessageOnEmail(string email, string message)
@@ -24,6 +26,9 @@ public class EmailSenderService : IEmailSenderService
             int.Parse(emailSettings["Port"]),
             bool.Parse(emailSettings["UseSSL"])
         );
+
+        _logger.LogInformation($"Подключение к SMTP-серверу {emailSettings["SmtpServer"]}:{emailSettings["Port"]} установлено." +
+                                   $"Используется SSL: {emailSettings["UseSSL"]}");
 
         await client.AuthenticateAsync(
             emailSettings["Username"],
