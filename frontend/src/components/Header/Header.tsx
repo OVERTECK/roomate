@@ -5,6 +5,9 @@ import { useAuth } from '@/hooks/useAuth';
 import Link from 'next/link';
 import { ExitButton } from '@/components/ExitButton/ExitButton';
 import Image from 'next/image';
+import { MoreVentIcon } from '../icons/MoreVent';
+import { LoginIcon } from '../icons/LoginIcon';
+import MyButton from '../UI/button/MyButton';
 
 function Header() {
     const { isAuth, logout, user } = useAuth();
@@ -32,6 +35,16 @@ function Header() {
                 )}
             </nav>
             <nav className={styles.nav_3}>
+                <div className={styles.popoverWrapper}>
+                    <button className={styles.nav_link} popoverTarget='poper'>
+                        <MoreVentIcon />
+                    </button>
+                    <div popover="auto" id='poper' className={styles.poper}>
+                        <Link href="/about">
+                            <button className={styles.nav_link}>О сервисе</button>
+                        </Link>
+                    </div>
+                </div>
                 {user ? (
                     <div>
                         <Link
@@ -56,7 +69,7 @@ function Header() {
                     </div>
                 ) : (
                     <Link href="/login" className={styles.nav_link}>
-                        Войти
+                        <LoginIcon />
                     </Link>
                 )}
             </nav>

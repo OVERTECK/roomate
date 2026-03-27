@@ -63,7 +63,7 @@ function AnnouncementContainer<
     useEffect(() => {
         const currentCity = searchParams.get('city');
 
-        if (city !== currentCity) {
+        if (city !== currentCity && city !== "") {
             const params = new URLSearchParams();
 
             params.set('city', city);

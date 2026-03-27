@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { AnnouncementRequest } from '@/DTO/request/AnnouncementRequest';
 import { useQueryClient } from '@tanstack/react-query';
 import { houseAnnouncementService } from '@/services';
+import { GroupIcon } from '../icons/GroupIcon';
 
 function AnnouncementImage({
     announcement,
@@ -70,9 +71,15 @@ function AnnouncementContent({
             <div className={styles.announcement_main}>
                 <h3 className={styles.street}>{announcement.fullAddress}</h3>
                 <PriceAnnouncement price={announcement.price} />
-                <span className={styles.createAt}>
-                    Размещено {isoToDateTime(announcement.createdAt.toString())}
-                </span>
+                <p className='text-gray-500 w-[85%] line-clamp-2'>{announcement.description}</p>
+                <div className={styles.footer}>
+                    <span className={styles.createAt}>
+                        {isoToDateTime(announcement.createdAt.toString())}
+                    </span>
+                    <span className={styles.createAt} title='Требуется соседей'>{announcement.requiredNumberNeighbors}
+                        <GroupIcon />
+                    </span>
+                </div>
             </div>
         </div>
     );

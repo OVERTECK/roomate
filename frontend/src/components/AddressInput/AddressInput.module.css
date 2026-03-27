@@ -1,5 +1,12 @@
+.searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 55%;
+    transform: translateY(-50%);
+}
+
 .inputAddress {
-    padding: 5px 10px;
+    padding: 5px 40px;
     font-size: 20px;
     background: transparent;
     border-radius: 10px;
@@ -7,6 +14,27 @@
     border: 1px solid gray;
     box-sizing: border-box;
     width: 100%;
+}
+
+.deleteBtn {
+    position: absolute;
+    right: 15px;
+    z-index: 10;
+    color: gray;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    top: 55%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: var(--main-color-hover);
+    }
 }
 
 .suggestionAddress {
@@ -36,6 +64,7 @@
 }
 
 .container {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 5px;
