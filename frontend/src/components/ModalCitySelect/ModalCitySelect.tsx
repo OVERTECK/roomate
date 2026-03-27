@@ -1,6 +1,7 @@
 import React from 'react';
 import MyModal from '@/components/MyModal/MyModal';
 import SelectRussiaCity from '@/components/SelectRussiaCity/SelectRussiaCity';
+import { SearchIcon } from '../icons/SearchIcon';
 
 interface ModalCitySelectProps {
     isVisibleChangeAddress: boolean;
@@ -26,7 +27,7 @@ export function ModalCitySelect({
             }}
             isCloseOnClickToVoid={true}
         >
-            <div className="w-[60vw] h-[50vh] p-3">
+            <div className="h-[50vh] p-3">
                 <header className="text-lg font-medium mb-4">
                     Выберите город:
                 </header>
@@ -34,8 +35,12 @@ export function ModalCitySelect({
                     title=""
                     city={city}
                     setAddress={(e) => {
-                        setIsVisibleChangeAddress(false);
-                        setCity(e as string);
+                        const city = e as string;
+
+                        if (city) {
+                            setCity(city);
+                            setIsVisibleChangeAddress(false);
+                        }
                     }}
                 />
             </div>

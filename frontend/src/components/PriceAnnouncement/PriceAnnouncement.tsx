@@ -3,6 +3,6 @@ import { splitDigit } from '@/utils/splitDigit';
 
 export function PriceAnnouncement({ price }: { price: number }) {
     return (
-        <span className={styles.price}>{splitDigit(price, '.')} руб/месяц</span>
+        <span className={styles.price}>{splitDigit(price, '.')} руб/месяц с человека</span>
     );
 }

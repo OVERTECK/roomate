@@ -194,8 +194,8 @@ export default function CreateAnnouncement() {
                     {errors.description && <MyError error={errors.description.message!} />}
                 </div>
                 <MyError error={error} />
-                <MyButton>Завершить</MyButton>
+                <MyButton disabled={createMutation.isPending}>{createMutation.isPending ? 'Создание...' : 'Завершить'}</MyButton>
             </form>
-        </div >
+        </div>
     );
 }

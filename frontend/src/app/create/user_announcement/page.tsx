@@ -13,6 +13,7 @@ import { UserAnnouncementService } from '@/services/UserAnnouncementService';
 import { useRouter } from 'next/navigation';
 import MyError from '@/components/Error/MyError';
 import { userAnnouncementService } from '@/services';
+import { set } from 'zod';
 
 const Page = () => {
     const { user } = useAuth();
@@ -27,8 +28,10 @@ const Page = () => {
         });
     const [error, setError] = useState<string>('');
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     async function handlerSubmit() {
+        setIsLoading(true);
         const response = await userAnnouncementService.add(announcementUser);
 
         if (response.status !== 200) {
@@ -36,6 +39,8 @@ const Page = () => {
 
             return;
         }
+
+        setIsLoading(false);
 
         router.push('/users_announcements');
     }
@@ -110,7 +115,9 @@ const Page = () => {
                     }
                 />
                 {error && <MyError error={error} />}
-                <MyButton onClick={handlerSubmit}>Завершить</MyButton>
+                <MyButton
+                    disabled={isLoading}
+                    onClick={handlerSubmit}>{isLoading ? 'Создание...' : 'Завершить'}</MyButton>
             </div>
         </div>
     );

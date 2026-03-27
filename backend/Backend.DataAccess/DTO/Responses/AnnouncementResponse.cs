@@ -18,6 +18,7 @@ public record AnnouncementResponse
     public required Guid Id { get; set; }
     public required string Country { get; set; }
     public required string City { get; set; }
+    public required string Description { get; set; }
     public required string Street { get; set; }
     public required string HouseNumber { get; set; }
     public required bool HasGarage { get; set; }

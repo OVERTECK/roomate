@@ -2,6 +2,7 @@ import { UUID } from 'node:crypto';
 
 export interface AnnouncementRequest {
     id: UUID;
+    description: string;
     country: string;
     city: string;
     street: string;
@@ -24,4 +25,5 @@ export interface AnnouncementRequest {
         age: number;
     };
     fullAddress: string;
+    requiredNumberNeighbors: number;
 }

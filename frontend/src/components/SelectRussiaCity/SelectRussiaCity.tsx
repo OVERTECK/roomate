@@ -4,11 +4,13 @@ import { AddressSuggestions, DaDataAddress } from 'react-dadata';
 import 'react-dadata/dist/react-dadata.css';
 import styles from '@/components/AddressInput/AddressInput.module.css';
 import { publicConfig } from '@/utils/publicConfig';
+import { SearchIcon } from '../icons/SearchIcon';
+import { useState } from 'react';
 
 interface Props {
     title?: string;
     city?: string;
-    setAddress: (value?: string) => void;
+    setAddress: (value: string) => void;
 }
 
 const SelectRussiaCity = ({
@@ -16,9 +18,15 @@ const SelectRussiaCity = ({
     city = '',
     setAddress,
 }: Props) => {
+    const [inputValue, setInputValue] = useState(city);
+
     return (
         <div className={styles.container}>
             <span className={styles.title}>{title}</span>
+            <SearchIcon className={styles.searchIcon} />
+            <button className={styles.deleteBtn} onClick={() => setInputValue('')}>
+                X
+            </button>
             <AddressSuggestions
                 inputProps={{
                     className: styles.inputAddress,
@@ -32,8 +40,8 @@ const SelectRussiaCity = ({
                 value={
                     city
                         ? {
-                            value: city,
-                            unrestricted_value: city,
+                            value: inputValue,
+                            unrestricted_value: inputValue,
                             data: {} as DaDataAddress,
                         }
                         : undefined
@@ -41,7 +49,10 @@ const SelectRussiaCity = ({
                 httpCache
                 renderOption={(suggestion) => suggestion.data.city}
                 onChange={(data) => {
-                    setAddress(data?.data.city as string);
+                    const city = data?.data.city as string;
+
+                    setAddress(city);
+                    setInputValue(city);
                 }}
             />
         </div>

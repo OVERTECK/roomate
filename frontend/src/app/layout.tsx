@@ -89,7 +89,7 @@ export default function RootLayout({
     return (
         <html lang="ru">
             <head>
-                <title>roomate - Поиск соседей</title>
+                <title>roomate - Поиск соседей для совместного проживания</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name='description' content='roomate - сайт для поиска людей для совместного проживания по всей России. Добавляй объявление жилья или анкету соседа, ищи соседей походящих именно тебе.' />
                 <meta property="og:type" content="website" />

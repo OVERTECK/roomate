@@ -1,14 +1,12 @@
 'use client';
 
 import React, { Suspense, useState } from 'react';
-import HouseAnnouncementService from '@/services/HouseAnnouncementService';
-import SelectRussiaCity from '@/components/SelectRussiaCity/SelectRussiaCity';
 import { useAuth } from '@/hooks/useAuth';
 import MyModal from '@/components/MyModal/MyModal';
 import { SelectTypeAnnouncements } from '@/components/SelectTypeAnnouncements/SelectTypeAnnouncements';
 import AddressIcon from '@/components/icons/AddressIcon';
 import HouseAnnouncementsList from '@/components/HouseAnnouncementList/HouseAnnouncementList';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import FilterAndSortAnnouncements from '@/components/FilterAndSortAnnouncements/FilterAndSortAnnouncements';
 import AnnouncementContainer from '@/components/AnnouncementContainer/AnnouncementContainer';
 import Loader from '@/components/Loader/Loader';

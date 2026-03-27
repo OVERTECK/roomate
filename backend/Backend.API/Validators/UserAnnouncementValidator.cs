@@ -9,13 +9,13 @@ public sealed class UserAnnouncementValidator : AbstractValidator<UserAnnounceme
     {
         RuleFor(x => x.Description).Length(0, 500)
             .WithMessage("Длина описания должна быть от 0 до 500 символов!");
-        
+
         RuleFor(x => x.City).NotEmpty()
             .WithMessage("Укажите город!");
-        
+
         RuleFor(x => x.Price).GreaterThanOrEqualTo(0)
-            .WithMessage("Стоимость проживания не может быть отрицательным!");
-        
+            .WithMessage("Стоимость проживания не может быть отрицательной!");
+
         RuleFor(x => x.MainPhotoUrl).NotEmpty()
             .WithMessage("Укажите фотографию!");
     }
