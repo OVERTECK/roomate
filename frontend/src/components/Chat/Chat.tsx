@@ -253,6 +253,18 @@ const Chat = () => {
                                         )[0]?.text || ''}
                                     </div>
                                 </div>
+                                {
+                                    chatParticipant.chat.messages.filter((msg) =>
+                                        msg.isRead === false && msg.userId !== user?.id).length > 0 &&
+                                    (
+                                        <p className='bg-[var(--main-color)] w-7 h-6 rounded-2xl text-[15px] flex justify-center items-center'>{(() => {
+                                            const amountUnReadMessages = chatParticipant.chat.messages.filter((msg) =>
+                                                msg.isRead === false && msg.userId !== user?.id).length
+
+                                            return amountUnReadMessages > 0 ? amountUnReadMessages : null;
+                                        })()}</p>
+                                    )
+                                }
                             </div>
                         </button>
                     ))}
