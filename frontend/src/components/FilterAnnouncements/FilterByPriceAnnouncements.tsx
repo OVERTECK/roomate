@@ -55,9 +55,9 @@ export function FilterByPriceAnnouncements({
                     }
                 />
             </div>
-            <MyButton type="button" onClick={handleFilterPrice}>
+            <button className='flex justify-center w-full p-1 border rounded-[10px] cursor-pointer hover:bg-(--main-color-hover) transition' type="button" onClick={handleFilterPrice}>
                 Отфильтровать
-            </MyButton>
+            </button>
         </form>
     );
 }
