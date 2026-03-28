@@ -13,11 +13,12 @@ interface Props<T> {
     city: string;
     filterPrice: { min: number; max: number };
     sort: string | null;
+    initialData?: T[];
 }
 
 function AnnouncementContainer<
     T extends { price: number; updatedAt: string | Date },
->({ queryKey, queryFn, ListComponent, city, filterPrice, sort }: Props<T>) {
+>({ queryKey, queryFn, ListComponent, city, filterPrice, sort, initialData }: Props<T>) {
     const searchParams = useSearchParams();
     const router = useRouter();
     const pathname = usePathname();
@@ -29,6 +30,8 @@ function AnnouncementContainer<
     } = useQuery({
         queryKey: [queryKey, city],
         queryFn: async () => await queryFn(city),
+        initialData: initialData,
+        staleTime: 30_000
     });
 
     const announcements = useMemo(() => {
