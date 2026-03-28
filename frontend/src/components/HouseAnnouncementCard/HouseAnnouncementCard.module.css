@@ -28,7 +28,7 @@
     position: relative;
     width: 300px;
     min-width: 300px;
-    height: 200px;
+    min-height: 200px;
     overflow: hidden;
 }
 
@@ -46,7 +46,7 @@
     flex: 1;
     padding: 15px 20px;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
 }
 
 .deleteBtnCont {
@@ -63,8 +63,9 @@
 .announcement_main {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 10px;
+    min-height: 100%;
     flex: 1;
     margin-right: 20px;
 }
