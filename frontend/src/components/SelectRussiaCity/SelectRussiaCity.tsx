@@ -23,10 +23,6 @@ const SelectRussiaCity = ({
     return (
         <div className={styles.container}>
             <span className={styles.title}>{title}</span>
-            <SearchIcon className={styles.searchIcon} />
-            <button className={styles.deleteBtn} onClick={() => setInputValue('')}>
-                X
-            </button>
             <AddressSuggestions
                 inputProps={{
                     className: styles.inputAddress,

@@ -1,5 +1,19 @@
+.wrapprerInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .inputAddress {
-    padding: 5px 10px;
+    padding: 5px 40px;
     font-size: 20px;
     background: transparent;
     border-radius: 10px;
@@ -18,7 +32,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    top: 55%;
+    top: 50%;
     transform: translateY(-50%);
     background: transparent;
     border: none;
