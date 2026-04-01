@@ -66,9 +66,9 @@ export function ModalCitySelect({
                             onChange={(data) => {
                                 const city = data?.data.city as string;
 
+                                setIsVisibleChangeAddress(false);
                                 setCity(city);
                                 setInputValue(city);
-                                setIsVisibleChangeAddress(false);
                             }}
                         />
                     </div>

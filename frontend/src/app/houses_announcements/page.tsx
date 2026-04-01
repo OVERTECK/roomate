@@ -16,7 +16,7 @@ export default async function Home({
 }: {
     searchParams: Promise<{ city?: string }>;
 }) {
-    const { city: cityParam } = await searchParams; // await здесь
+    const { city: cityParam } = await searchParams;
     const city = cityParam || 'Москва';
 
     const initAnnouncements = await houseAnnouncementService.getByCity(city);

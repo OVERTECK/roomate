@@ -30,7 +30,7 @@ function AnnouncementContainer<
     } = useQuery({
         queryKey: [queryKey, city],
         queryFn: async () => await queryFn(city),
-        initialData: initialData,
+        // initialData: initialData,
         staleTime: 30_000
     });
 
