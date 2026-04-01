@@ -86,6 +86,7 @@ function HomeContent(
                     city={city}
                 />
             </div>
+
             <ModalCitySelect
                 isVisibleChangeAddress={isVisibleChangeAddress}
                 setIsVisibleChangeAddress={setIsVisibleChangeAddress}
