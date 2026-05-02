@@ -7,7 +7,6 @@ import { ExitButton } from '@/components/ExitButton/ExitButton';
 import Image from 'next/image';
 import { MoreVentIcon } from '../icons/MoreVent';
 import { LoginIcon } from '../icons/LoginIcon';
-import MyButton from '../UI/button/MyButton';
 
 function Header() {
     const { isAuth, logout, user } = useAuth();
@@ -20,19 +19,16 @@ function Header() {
                 </Link>
             </nav>
             <nav className={styles.nav_2}>
-                {isAuth && (
-                    <Link
-                        href="/choice_announcement"
-                        className="w-10 h-10 bg-[#F2D3AC] flex items-center
-                        justify-center cursor-pointer text-black text-3xl rounded-[50%]
-                        hover:scale-y-110
-                        hover:scale-x-110
-                        transition
-                        "
-                    >
-                        +
-                    </Link>
-                )}
+                <Link
+                    href="/choice_announcement"
+                    className="w-10 h-10 bg-[#F2D3AC] flex items-center
+                    justify-center cursor-pointer text-black text-3xl rounded-[50%]
+                    hover:scale-y-110
+                    hover:scale-x-110
+                    transition"
+                >
+                    +
+                </Link>
             </nav>
             <nav className={styles.nav_3}>
                 <div className={styles.popoverWrapper}>
