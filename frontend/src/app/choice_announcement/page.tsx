@@ -1,10 +1,21 @@
 'use client';
 
+import { useEffect } from 'react';
 import styles from './styles.module.css';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function ChoiceAnnouncement() {
     const router = useRouter();
+    const { user, isAuth, isAuthLoading } = useAuth();
+
+    useEffect(() => {
+        if (!isAuthLoading) {
+            if (!isAuth || user === null) {
+                router.push('/login');
+            }
+        }
+    }, [isAuthLoading, isAuth, user, router]);
 
     return (
         <div className={styles.page}>
