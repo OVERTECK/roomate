@@ -19,15 +19,12 @@ public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
         RuleFor(x => x.Surname).Matches(@"^\D*$")
             .WithMessage("Фамилия не должна содержать цифры!");
 
-        RuleFor(x => x.Age);
-
-        RuleFor(x => x.Age).InclusiveBetween(0, 200)
+        RuleFor(x => x.Age)
+            .InclusiveBetween(0, 200)
             .WithMessage("Возраст должен быть от 0 до 200!");
 
         RuleFor(x => x.Country);
 
         RuleFor(x => x.City);
-        
-        
     }
 }

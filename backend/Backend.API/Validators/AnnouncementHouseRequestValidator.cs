@@ -19,13 +19,19 @@ public sealed class AnnouncementHouseRequestValidator : AbstractValidator<Announ
         RuleFor(x => x.City).NotEmpty()
             .WithMessage("Укажите город!");
 
-        RuleFor(x => x.CountRooms).GreaterThan(0)
+        RuleFor(x => x.CountRooms)
+            .GreaterThan(0)
+            .LessThan(100)
             .WithMessage("Количество комнат не может быть меньше нуля или равно нулю!");
 
-        RuleFor(x => x.MaxFloor).GreaterThan(0)
+        RuleFor(x => x.MaxFloor)
+            .GreaterThan(0)
+            .LessThan(100)
             .WithMessage("Количество этажей здания не может быть меньше нуля или равно нулю!");
 
-        RuleFor(x => x.Price).GreaterThanOrEqualTo(0)
+        RuleFor(x => x.Price)
+            .GreaterThanOrEqualTo(0)
+            .LessThanOrEqualTo(1_000_000)
             .WithMessage("Стоимость проживания не может быть отрицательной!");
 
         RuleFor(x => x.Street).NotEmpty()
@@ -42,6 +48,12 @@ public sealed class AnnouncementHouseRequestValidator : AbstractValidator<Announ
 
         RuleFor(x => x.CreatedHouse).InclusiveBetween(0, DateTime.Today.Year)
             .WithMessage($"Год постройки здания может быть от 0 до {DateTime.Today.Year}");
+
+        RuleFor(x => x.Floor).InclusiveBetween(0, 1000)
+            .WithMessage($"Этаж здания может быть от 0 до 1000");
+
+        RuleFor(x => x.RequiredNumberNeighbors).InclusiveBetween(0, 50)
+            .WithMessage($"Количество соседей может быть от 0 до 50");
 
         RuleFor(x => x.Photos).NotEmpty()
             .WithMessage("Список фотографий не должен быть пустым!");

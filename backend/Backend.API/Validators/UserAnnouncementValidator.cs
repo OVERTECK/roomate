@@ -13,8 +13,9 @@ public sealed class UserAnnouncementValidator : AbstractValidator<UserAnnounceme
         RuleFor(x => x.City).NotEmpty()
             .WithMessage("Укажите город!");
 
-        RuleFor(x => x.Price).GreaterThanOrEqualTo(0)
-            .WithMessage("Стоимость проживания не может быть отрицательной!");
+        RuleFor(x => x.Price)
+            .InclusiveBetween(0, 1_000_000)
+            .WithMessage("Стоимость проживания может быть от 0 до 1_000_000!");
 
         RuleFor(x => x.MainPhotoUrl).NotEmpty()
             .WithMessage("Укажите фотографию!");

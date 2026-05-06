@@ -38,7 +38,8 @@ public class UserRequestValidator : AbstractValidator<RegistrationRequest>
         RuleFor(x => x.Age).NotEmpty()
             .WithMessage("Возраст не должен быть пустым!");
 
-        RuleFor(x => x.Age).InclusiveBetween(0, 200)
+        RuleFor(x => x.Age)
+            .InclusiveBetween(0, 200)
             .WithMessage("Возраст должен быть от 0 до 200!");
 
         RuleFor(x => x.Country).NotEmpty()
