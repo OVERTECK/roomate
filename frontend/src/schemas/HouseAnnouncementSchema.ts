@@ -5,17 +5,20 @@ export const HouseAnnouncementSchema = z.object({
     price: z
         .number('Укажите цену!')
         .int('Цена должна быть указана целым числом!')
-        .min(0, 'Цена не может быть меньше нуля!'),
+        .min(0, 'Цена не может быть меньше нуля!')
+        .max(1_000_000, "Максимальное значение 1_000_000"),
 
     countRooms: z
         .number('Укажите количество комнат!')
         .int('Количество комнат должно быть целым числом!')
-        .positive('Количество комнат должно быть больше нуля!'),
+        .positive('Количество комнат должно быть больше нуля!')
+        .max(100, "Максимальное значение 100"),
 
     maxFloor: z
         .number('Укажите максимальное количество этажей!')
         .int('Количество этажей должно быть целым числом!')
-        .positive('Количество этажей должно быть больше нуля!'),
+        .positive('Количество этажей должно быть больше нуля!')
+        .max(1000, "Максимальное значение 1000"),
 
     mainPhotoUrl: z.string().min(1, 'Укажите фотографию'),
 
@@ -30,7 +33,9 @@ export const HouseAnnouncementSchema = z.object({
 
     street: z.string('Укажите улицу!').min(1, 'Укажите улицу!'),
 
-    houseNumber: z.string('Укажите номер дома!').min(1, 'Укажите номер дома!'),
+    houseNumber: z.string('Укажите номер дома!')
+        .min(1, 'Укажите номер дома!')
+        .max(1000, "Максимальное значение 1000"),
 
     isPayUtilities: z.boolean(),
 
@@ -55,8 +60,8 @@ export const HouseAnnouncementSchema = z.object({
         .min(1, 'Минимум 1 сосед!')
         .max(20, 'Слишком большое количество соседей!'),
 
-    lat: z.number().min(-90).max(90),
-    lon: z.number().min(-180).max(180),
+    // lat: z.number().min(-90).max(90),
+    // lon: z.number().min(-180).max(180),
 
     hasWashingMachine: z.boolean(),
     hasMicrowave: z.boolean(),

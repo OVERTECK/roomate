@@ -4,7 +4,7 @@ using Backend.DataAccess.Entities;
 
 namespace Backend.API.DTO;
 
-public record AnnouncementFlatRequest
+public class AnnouncementFlatRequest
 {
     public string? Description { get; set; }
     public string Country { get; set; } = "Россия";

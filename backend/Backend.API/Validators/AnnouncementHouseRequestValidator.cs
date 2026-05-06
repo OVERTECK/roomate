@@ -16,7 +16,8 @@ public sealed class AnnouncementHouseRequestValidator : AbstractValidator<Announ
         RuleFor(x => x.HasLift).NotNull()
             .WithMessage("Укажите наличие лифта!");
 
-        RuleFor(x => x.City).NotEmpty()
+        RuleFor(x => x.City)
+            .NotEmpty()
             .WithMessage("Укажите город!");
 
         RuleFor(x => x.CountRooms)
