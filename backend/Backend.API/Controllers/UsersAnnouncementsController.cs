@@ -141,9 +141,16 @@ public class UsersAnnouncementsController(
     {
         try
         {
-            var result = await usersAnnouncementsService.DeleteAsync(id);
+            var announcement = await usersAnnouncementsService.GetById(id);
 
-            if (result == 0) return NotFound();
+            if (announcement == null) return NotFound();
+
+            var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (!Guid.TryParse(userId, out var tokenUserId)) return Unauthorized();
+            if (announcement.CreatedUserId != tokenUserId) return Unauthorized();
+
+            var result = await usersAnnouncementsService.DeleteAsync(id);
 
             return Ok(new ResponseServer(200, "Successfully deleted announcement"));
         }
