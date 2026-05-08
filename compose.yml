@@ -84,9 +84,22 @@ services:
     depends_on:
       - api
 
+  seq:
+    image: datalust/seq
+    ports:
+      - "5341:80"
+    environment:
+      ACCEPT_EULA: Y
+      SEQ_FIRSTRUN_ADMINPASSWORD: "admin"
+    volumes:
+      - seq_data:/data
+    networks:
+    - app_network
+
 volumes:
   redis_data:
   pg_data:
+  seq_data:
     
 networks:
   app_network:

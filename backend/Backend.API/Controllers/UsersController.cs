@@ -50,7 +50,8 @@ public class UsersController(
     {
         var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-        if (userId != user.Id.ToString()) return Unauthorized();
+        if (!Guid.TryParse(userId, out var tokenUserId)) return Unauthorized();
+        if (tokenUserId != user.Id) return Unauthorized();
 
         var validateResult = await validator.ValidateAsync(user);
 

@@ -93,7 +93,6 @@ public static class DI
                 policy
                     .WithOrigins(
                         "https://roomate.ru",
-                        "https://overteck.ru",
                         "http://localhost:3000")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
