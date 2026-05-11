@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "roomate.API", "src\roomate.API\roomate.API.csproj", "{AC6AF58C-4E3F-40D6-91FF-7EC3A0C7EFAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "roomate.Infrastructure", "src\roomate.Infrastructure\roomate.Infrastructure.csproj", "{B8CF7CC0-135B-47B5-946A-4CB3DB3E8F1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "roomate.Domain", "src\roomate.Domain\roomate.Domain.csproj", "{4BDC1D99-65EF-4246-AFF7-4C8C82673D49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "roomate.Application", "src\roomate.Application\roomate.Application.csproj", "{B144DC79-AA51-4609-ACC9-A93F45F0C81B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC6AF58C-4E3F-40D6-91FF-7EC3A0C7EFAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6AF58C-4E3F-40D6-91FF-7EC3A0C7EFAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6AF58C-4E3F-40D6-91FF-7EC3A0C7EFAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6AF58C-4E3F-40D6-91FF-7EC3A0C7EFAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8CF7CC0-135B-47B5-946A-4CB3DB3E8F1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8CF7CC0-135B-47B5-946A-4CB3DB3E8F1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8CF7CC0-135B-47B5-946A-4CB3DB3E8F1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8CF7CC0-135B-47B5-946A-4CB3DB3E8F1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BDC1D99-65EF-4246-AFF7-4C8C82673D49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BDC1D99-65EF-4246-AFF7-4C8C82673D49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BDC1D99-65EF-4246-AFF7-4C8C82673D49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BDC1D99-65EF-4246-AFF7-4C8C82673D49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B144DC79-AA51-4609-ACC9-A93F45F0C81B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B144DC79-AA51-4609-ACC9-A93F45F0C81B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B144DC79-AA51-4609-ACC9-A93F45F0C81B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B144DC79-AA51-4609-ACC9-A93F45F0C81B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
